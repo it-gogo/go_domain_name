@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="go_domain_name"
+  id="myeclipse.1411695151095"
+  context-root="/go_domain_name"
+  j2ee-spec="6.0"
+  archive="go_domain_name.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,38 @@
+/*左侧开始*/
+#content {
+	width: 200px;
+	border-right: 4px solid #b4cdd0;
+	overflow: hidden; 
+}
+
+#content  ul {
+	margin: 0;
+	overflow: hidden;
+	font-size: 14px;
+	background: #f2f6fa;
+	padding-top: 12px;
+	margin-left: 0px;
+}
+
+#content ul li a {
+	font-size: 14px;
+	text-decoration: none;
+	color: #757c84;
+}
+
+#content  ul li img {
+	float: ;
+	margin-: 16px;
+	margin-top: 10px;
+}
+
+#content  ul li a {
+	float: left;
+	padding: 10px 0;
+	width: 100%;
+	color: #757c84;
+	cursor: pointer;
+}
+#content  ul li a:hover{
+	background-color:white;
+}

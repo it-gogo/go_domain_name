@@ -1,0 +1,24 @@
+#MyEclipse Hibernate Properties
+#Wed Dec 24 14:24:37 CST 2014
+sessionFactoryName=
+genBasicCompId=false
+profile=
+daoSFId=
+version=3.3
+jndiPath=
+detectM2M=false
+reStrategyClass=
+detectO2O=false
+springDaoFile=
+useJavaTypes=true
+keyGenerator=uuid.hex
+libInstallFolder=<no jars/zips in selected libraries>
+addLibs2Project=true
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=com.go.common.model.BaseVo
+genAnnotations=false
+reSettingsFile=
+configFile=/go_domain_name/src/hibernate.cfg.xml
+createConfigFile=true
+addLibs2Classpath=true
