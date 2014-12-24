@@ -19,13 +19,13 @@
             <div class="easyui-accordion" data-options="fit:true,border:false"  >
                 <div title="Title1"  data-options="selected:true" style="margin: 0px;padding: 0px;" >
                     <ul style="list-style-type:none"> 
-                    	<li onclick="changeCss(this)">
-                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanager/troleAction.action');"  >
+                    	<li>
+                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanager/hmenuAction!findList.action');"  >
 	                    		<img src=css/admin/images/Menu_management.png />
 	                    		<label>角色管理</label>
                     		</a>
                     	</li>
-                    	<li onclick="changeCss(this)">
+                    	<li>
                     		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanager/troleAction.action');"  >
 	                    		<img src=css/admin/images/Menu_management.png />
 	                    		<label>角色管理</label>
@@ -33,19 +33,12 @@
                     	</li>
                     </ul>
                 </div>
-                <div title="Title2" >
-                    content2
-                </div>
-                <div title="Title3" >
-                    content3
-                </div>
             </div>
         </div>
         
         
-        <div data-options="region:'center',iconCls:'icon-ok'">
-            <div class="easyui-tabs" data-options="fit:true,border:false,plain:true">
-                <!-- <div title="About" data-options="href:'_content.html'" style="padding:10px"></div> -->
+        <div data-options="region:'center',iconCls:'icon-ok',tools:'#tab-tools'"  >
+           <!--  <div class="easyui-tabs" data-options="fit:true,border:false,plain:true">
                 <div title="DataGrid" style="padding:5px">
                     <table class="easyui-datagrid"
                             data-options="url:'datagrid_data1.json',method:'get',singleSelect:true,fit:true,fitColumns:true">
@@ -61,8 +54,36 @@
                         </thead>
                     </table>
                 </div>
-            </div>
+            </div> -->
+		    <div id="tt" class="easyui-tabs" data-options="tools:'#tab-tools'" style="width:100%;height:100%;">
+		    </div>
         </div>
     </div>
+<script type="text/javascript">
+        var index = 0;
+        function addPanel(cdbh,titles,action){
+        	var h =  $(window).height();	
+			var  theight ;//头部高度
+			var cheight ;//页面高度
+			var ifheight;
+		     theight = 75;
+		     cheight =  h-62;//定义层的高度
+		     ifheight = h-90;//定义IFrame的高度
+            index++;
+            $('#tt').tabs('add',{
+                title: 'Tab'+index,
+                /* content: '<div style="padding:10px">Content'+index+'</div>', */
+                content:'<iframe id="t" scrolling="yes" frameborder="0"  src="homepage.jsp" width="100%" height="'+ifheight+'"></iframe>',
+                closable: true
+            });
+        }
+        function removePanel(){
+            var tab = $('#tt').tabs('getSelected');
+            if (tab){
+                var index = $('#tt').tabs('getTabIndex', tab);
+                $('#tt').tabs('close', index);
+            }
+        }
+    </script>
 </body>
 </html>

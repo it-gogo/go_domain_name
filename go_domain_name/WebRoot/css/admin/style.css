@@ -1,4 +1,4 @@
-/*左侧开始*/
+/*��࿪ʼ*/
 #content {
 	width: 200px;
 	border-right: 4px solid #b4cdd0;
@@ -12,7 +12,16 @@
 	background: #f2f6fa;
 	padding-top: 12px;
 	margin-left: 0px;
+	-webkit-padding-start: 0px;
 }
+/* #content  ul li{
+	width:100%;
+	margin: 0px;
+	display: list-item;
+	text-align: -webkit-match-parent;
+	margin: 0;
+overflow: hidden;
+} */
 
 #content ul li a {
 	font-size: 14px;
@@ -21,8 +30,8 @@
 }
 
 #content  ul li img {
-	float: ;
-	margin-: 16px;
+	float: left;
+	margin-left: 16px;
 	margin-top: 10px;
 }
 
@@ -32,6 +41,12 @@
 	width: 100%;
 	color: #757c84;
 	cursor: pointer;
+}
+#content  ul li a label{
+	line-height: 19px;
+	float: left;
+	margin: 10px 0 0 10px;
+	width: 90px;
 }
 #content  ul li a:hover{
 	background-color:white;

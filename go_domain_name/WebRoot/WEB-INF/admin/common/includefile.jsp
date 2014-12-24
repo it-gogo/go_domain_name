@@ -6,6 +6,7 @@
 <link href="<%=request.getContextPath() %>/css/jquery/icon.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery/jquery.tabs.extend.js"></script>
 <script type="text/javascript">
  $(document).ready(function(){
       $.ajaxSetup ({
