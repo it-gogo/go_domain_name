@@ -20,7 +20,7 @@
                 <div title="Title1"  data-options="selected:true" style="margin: 0px;padding: 0px;" >
                     <ul style="list-style-type:none"> 
                     	<li>
-                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanage/hmenuAction!findList.action');"  >
+                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanage/hmenuAction!redirect.action');"  >
 	                    		<img src=css/admin/images/Menu_management.png />
 	                    		<label>角色管理</label>
                     		</a>

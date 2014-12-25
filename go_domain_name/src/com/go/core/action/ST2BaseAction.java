@@ -2,7 +2,6 @@ package com.go.core.action;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +18,6 @@ import com.go.common.util.ContextUtil;
 import com.go.common.util.JSONUtil;
 import com.go.common.util.Util;
 import com.go.core.dao.SP3BaseDao;
-import com.go.po.Thmenu;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -220,9 +218,10 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	public String ajaxList(){
 		try {
 			Map<String,String[]>  parame = ContextUtil.getHttpParame();
-			System.out.println(vo.getClass().getName());
+			System.out.println(parame);
 			String csql = "Select count(*) from "+vo.getClass().getName()+"  Where 1=1";
 			String sql = "  From "+vo.getClass().getName()+" as a Where 1=1 ";
+			System.out.println(sql);
 			SqlBean sqlBean = baseDao.createSQL(sql, csql, parame, null);
 			PageBean  pageBean = baseDao.getH3DbManager().findList(sqlBean);
 			JSONObject  res = new JSONObject();
@@ -242,30 +241,38 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	 * @return
 	 */
 	public String addxx(){
-		
-		return "edit";
+		try {
+			baseDao.save(vo);
+			setReturnMessage("1","添加成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "ajax";
 	}
 	/**
 	 * 去修改页面
 	 * @return
 	 */
 	public String updatexx(){
-		vo=(BaseVo) baseDao.getEntity(BaseVo.class, vo.getId());
-		return addxx();
-	}
-	/**
-	 * 添加或更新数据
-	 * @return
-	 */
-	public String savexx(){
-		
-		String id=vo.getId();
-		if(id==null || "".equals(id)){
-			baseDao.save(vo);
-			setReturnMessage("1","保存成功");
-		}else{
+		try {
+			
 			baseDao.update(vo);
 			setReturnMessage("1","修改成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "ajax";
+	}
+	/**
+	 * 查询数据
+	 * @return
+	 */
+	public String loadxx(){
+		try {
+			vo=baseDao.loadEntity(vo.getClass(), vo.getId());
+			this.ajaxJson(JSONUtil.toJSONObjectVo(vo).toJSONString());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return "ajax";
 	}
@@ -287,13 +294,11 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	 * @return
 	 */
 	public String changeStatus(){
-		String isactives="";
-		if("1".equals(vo.getIsactives())){//当前为启动状态
-			isactives="0";
-			setReturnMessage("1","禁用成功");
-		}else{//当前为禁用状态
-			isactives="1";
+		String isactives=vo.getIsactives();
+		if("1".equals(isactives)){//当前为启动状态
 			setReturnMessage("1","启用成功");
+		}else{//当前为禁用状态
+			setReturnMessage("1","禁用成功");
 		}
 		Object[] parame={isactives,vo.getId()};
 		baseDao.getH3DbManager().updateForHql("update "+vo.getClass().getName()+" set isactives=? where id=?", parame);

@@ -117,6 +117,30 @@ public class JSONUtil {
 		}
 		return jsonObject;
 	}
+	
+	public static JSONObject toJSONObjectVo(Object obj) {
+		JSONObject jsonObject = new JSONObject();
+		PropertyDescriptor[] destDesc = PropertyUtils
+				.getPropertyDescriptors(obj);
+		try {
+			for (int i = 0; i < destDesc.length; i++) {
+				if (destDesc[i].getName().equals("class"))
+					continue;
+				if (PropertyUtils.getProperty(obj, destDesc[i].getName()) == null) {
+					jsonObject.put("vo."+destDesc[i].getName(), "");
+				} else {
+					//System.out.println(PropertyUtils.(obj, destDesc[i].getName()));
+					jsonObject
+							.put("vo."+destDesc[i].getName(), PropertyUtils
+									.getProperty(obj,destDesc[i].getName())
+									.toString());
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return jsonObject;
+	}
 	/*public  static void  main(String[] arg){
 		Tmenu  vo = new Tmenu();
 		List<Tmenu> list = new ArrayList<Tmenu>();

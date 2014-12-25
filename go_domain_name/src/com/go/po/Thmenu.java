@@ -18,7 +18,7 @@ public class Thmenu extends com.go.common.model.BaseVo implements
 	private Integer series;
 	private String scriptname;
 	private String icon;
-	private String remark;
+	private String description;
 	private String isactives;
 	private Integer seq;
 
@@ -36,7 +36,7 @@ public class Thmenu extends com.go.common.model.BaseVo implements
 	/** full constructor */
 	public Thmenu(String pid, String mname, String urls, String mcode,
 			String pmcode, Integer series, String scriptname, String icon,
-			String remark, String isactives, Integer seq) {
+			String description, String isactives, Integer seq) {
 		this.pid = pid;
 		this.mname = mname;
 		this.urls = urls;
@@ -45,7 +45,7 @@ public class Thmenu extends com.go.common.model.BaseVo implements
 		this.series = series;
 		this.scriptname = scriptname;
 		this.icon = icon;
-		this.remark = remark;
+		this.description = description;
 		this.isactives = isactives;
 		this.seq = seq;
 	}
@@ -124,12 +124,13 @@ public class Thmenu extends com.go.common.model.BaseVo implements
 		this.icon = icon;
 	}
 
-	public String getRemark() {
-		return this.remark;
+
+	public String getDescription() {
+		return description;
 	}
 
-	public void setRemark(String remark) {
-		this.remark = remark;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getIsactives() {

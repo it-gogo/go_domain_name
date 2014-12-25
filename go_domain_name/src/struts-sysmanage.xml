@@ -7,9 +7,7 @@
 <package name="sysmanage" extends="basePackage" namespace="/sysmanage">
 	<!-- 后台菜单 -->
 	<action name="hmenuAction"  class="hmenuAction" >
-	   <result name="main">/WEB-INF/admin/sysmanage/hmenu/hmenuMain.jsp</result>
-	   <result name="list">/WEB-INF/admin/sysmanage/hmenu/hmenuList.jsp</result>
-	   <result name="edit">/WEB-INF/admin/sysmanage/hmenu/hmenuEdit.jsp</result>
+	   <result name="input">/WEB-INF/admin/sysmanage/hmenu/hmenu.jsp</result>
 	</action>
 </package>
 
