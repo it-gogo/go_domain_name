@@ -2,23 +2,14 @@
 <html>
 <head>
 <%@include file="/WEB-INF/admin/common/includefile.jsp" %>
+<script type="text/javascript">
+$(document).ready(function(){
+	  initGrids("grids","hmenuAction!ajaxList.action");
+});
+</script>
 </head>
 <body>
-<!-- <div id="toolbar">&nbsp;&nbsp; 
-<form id="qForm" method="post">
- &nbsp; &nbsp; &nbsp;  <span class="span">菜单名称:</span><input type="text" id="name"  name="vo.name"  value="">
- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="query(gID,queryFormID)">查询</a>
-    	 <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="resetForm(queryFormID)">重置</a>
- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newMenu(editDialogID)">新 增</a>
- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deletexxAll();">删 除</a>
- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-up" plain="true" onclick="saveSeq(0);">上 移</a>
- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-down" plain="true" onclick="saveSeq(1);">下 移</a>
- <input type="hidden" id="mnumber"  name="vo.mnumber"  value="" datatype="menuid">
-	</form>	
-</div> -->
- <table id="grids" title="菜单列表"  fit="true"
-	 toolbar="#toolbar" pagination="true"      
-    rownumbers="true" fitColumns="false" singleSelect="true">   
+ <!-- <table id="grids" title="菜单列表"  toolbar="#toolbar"   style="height: 100%">   
      <thead>          
        <tr>
           <th field="chk" width="20" align='center' checkbox=true  ></th>
@@ -32,6 +23,19 @@
           <th field="id" width="150"  align='center' formatter='getHandleStr'>操作</th>
          </tr>
      </thead>
+</table> -->
+
+<table id="grids"  class="easyui-datagrid" title="菜单列表" style="height:100%" >
+    <thead>
+        <tr>
+            <th data-options="field:'mnumber',width:80">菜单编号</th>
+            <th data-options="field:'name',width:100">菜单名称</th>
+            <th data-options="field:'urls',width:80,align:'right'">链接地址</th>
+            <th data-options="field:'scriptevent',width:80,align:'right'">点击事件</th>
+            <th data-options="field:'step',width:250">级数</th>
+            <th data-options="field:'status',width:60,align:'center'" >操作</th>
+        </tr>
+    </thead>
 </table>
 
 </body>

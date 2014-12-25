@@ -2,6 +2,7 @@ package com.go.core.action;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,7 @@ import com.go.common.util.ContextUtil;
 import com.go.common.util.JSONUtil;
 import com.go.common.util.Util;
 import com.go.core.dao.SP3BaseDao;
+import com.go.po.Thmenu;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -47,7 +49,7 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	
 	protected Map<String,String[]>  parame;
 	
-	private BaseVo vo;
+	private BaseVo vo=new BaseVo();
 	
 	@Autowired
 	private SP3BaseDao<BaseVo,String> baseDao;
@@ -199,6 +201,36 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	public String redirect(){
 		return this.INPUT;
 	}
+	
+//	public PageBean<Thmenu> findList(Map<String,String[]> parame){
+//		String csql = "Select count(*) from Thmenu  Where 1=1";
+//		String sql = "  From Thmenu as a Where 1=1 ";
+//		SqlBean sqlBean = baseDao.createSQL(sql, csql, parame, null);
+//		PageBean<Thmenu>  pageBean = baseDao.getH3DbManager().findList(sqlBean);
+//		return pageBean;
+//	}
+	/**
+     * 查询集合
+     * @return
+     */
+	public String findList(){
+		return "list";
+	}
+	
+	public String ajaxList(){
+		Map<String,String[]>  parame = ContextUtil.getHttpParame();
+		String csql = "Select count(*) from "+vo.getClass().getName()+"  Where 1=1";
+		String sql = "  From "+vo.getClass().getName()+" as a Where 1=1 ";
+		SqlBean sqlBean = baseDao.createSQL(sql, csql, parame, null);
+		PageBean  pageBean = baseDao.getH3DbManager().findList(sqlBean);
+		JSONObject  res = new JSONObject();
+		res.put("total", "");
+		res.put("rows", "");
+		this.ajaxJson(res.toJSONString());
+//		this.ajaxJson(JSONUtil.objToJSonStr(pageBean));
+		return "ajax";
+	}
+	
 	
 	
 	/**

@@ -20,13 +20,13 @@
                 <div title="Title1"  data-options="selected:true" style="margin: 0px;padding: 0px;" >
                     <ul style="list-style-type:none"> 
                     	<li>
-                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanager/hmenuAction!findList.action');"  >
+                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanage/hmenuAction!findList.action');"  >
 	                    		<img src=css/admin/images/Menu_management.png />
 	                    		<label>角色管理</label>
                     		</a>
                     	</li>
                     	<li>
-                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanager/troleAction.action');"  >
+                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanage/troleAction.action');"  >
 	                    		<img src=css/admin/images/Menu_management.png />
 	                    		<label>角色管理</label>
                     		</a>
@@ -63,19 +63,25 @@
         var index = 0;
         function addPanel(cdbh,titles,action){
         	var h =  $(window).height();	
-			var  theight ;//头部高度
-			var cheight ;//页面高度
-			var ifheight;
-		     theight = 75;
-		     cheight =  h-62;//定义层的高度
-		     ifheight = h-90;//定义IFrame的高度
+		    var theight = 75;//头部高度
+		    var  cheight =  h-62;//定义层的高度
+		     var ifheight = h-90;//定义IFrame的高度
             index++;
+            if($("#tt").tabs('exists',titles)){
+    	  $("#tt").tabs('select',titles);
+    	   var currTab = $('#tt').tabs('getTab', titles),  
+             iframe = $(currTab.panel('options').content),  
+            content = '<iframe scrolling="auto" frameborder="0"  src="' + iframe.attr('src') + '" style="width:100%;height:100%;"></iframe>';  
+          $('#tt').tabs('update', {tab: currTab, options: {content: content, closable: true}}); 
+          /* $('#tt').tabs('updateIframeTab', {tab: currTab, options: {content: content, closable: true},which:titles});  */
+       }else{
             $('#tt').tabs('add',{
-                title: 'Tab'+index,
+                title: titles,
                 /* content: '<div style="padding:10px">Content'+index+'</div>', */
-                content:'<iframe id="t" scrolling="yes" frameborder="0"  src="homepage.jsp" width="100%" height="'+ifheight+'"></iframe>',
+                content:'<iframe id="t" scrolling="yes" frameborder="0"  src='+action+' width="100%" height="'+ifheight+'"></iframe>',
                 closable: true
             });
+            }
         }
         function removePanel(){
             var tab = $('#tt').tabs('getSelected');

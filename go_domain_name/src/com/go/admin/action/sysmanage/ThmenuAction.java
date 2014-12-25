@@ -28,35 +28,7 @@ public class ThmenuAction extends ST2BaseAction<Thmenu, String> {
 	@Autowired
 	private ThmenuDao baseDao;
 
-	/**
-     * 查询集合
-     * @return
-     */
-	public String findList(){
-		ContextUtil.removeSessionVal("searchparame");
-		Map<String,String[]>  parame = ContextUtil.getHttpParame();
-		this.setPageBean(baseDao.findList(parame));
-		this.setPageUrl("hmenuAction!findList.action");
-		return "list";
-	}
-	/**
-     * 查询集合
-     * @return
-     */
-	@SuppressWarnings("unchecked")
-	public String searchList(){
-		Map<String,String[]>  parame = ContextUtil.getHttpParame();
-		Map<String,String[]>  map=new HashMap<String,String[]>(parame);
-		if(parame.containsKey("curPage")){
-			parame=(Map<String, String[]>) ContextUtil.getHttpSessionVal("searchparame");
-			map.put("curPage", parame.get("curPage"));
-		}else{
-			ContextUtil.setHttpSessionVal("searchparame", map);
-		}
-		this.setPageBean(baseDao.findList(map));
-		this.setPageUrl("hmenuAction!searchList.action");
-		return "list";
-	}
+	
 	
 	public Thmenu getVo() {
 		return vo;
