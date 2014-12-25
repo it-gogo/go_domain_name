@@ -28,7 +28,9 @@ public class ThmenuAction extends ST2BaseAction<Thmenu, String> {
 	@Autowired
 	private ThmenuDao baseDao;
 
-	
+	public ThmenuAction(){
+		super.setVo(this.getVo());
+	}
 	
 	public Thmenu getVo() {
 		return vo;

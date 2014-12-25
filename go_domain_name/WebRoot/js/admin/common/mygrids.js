@@ -1,45 +1,12 @@
-/**
- * 初始化列表
- * @param gId
- * @param listurl
- */
-function  initGrids(gId,listurl){
-	var  nurl=listurl;
-	$("#"+gId).datagrid({
-		/*queryParams:getQueryParame(qformID),*/
-        url:nurl,
-        //onClickCell:clickCell,
-        //onAfterEdit:afterEdit,
-        checkOnSelect:false,
-        selectOnCheck:false,
-        pageSize:20,
-        pageList:[20,40,60,80,100],
-        loadMsg:'',
-        onBeforeLoad : function(param) {
-        	//alert($.toJSON(param));
-			parent.$.messager.progress({
-				text : '数据加载中....'
-			});
-		},
-		onLoadSuccess : function(data) {
-			//salert(data)
-			/*if(data.message!='undefined'&&data.message!=null){
-				if(data.status=="unvalid"){
-					location.href="../errors/sessionError.jsp"
-	            }else{
-	            	parent.alertInfo(data.message);
-	            }
-			}
-			if(typeof(gridafterload)=='function'){
-				gridafterload(data,qformID);
-			}*/
-//			$('#'+gID).datagrid('doCellTip',{'max-width':'100px'});*/
-		},
-		onLoadError:function(){
-			//alert(data);
-			parent.$.messager.progress('close');
-			alertInfo("数据加载错误");
-			
-		}
-   });
+
+//操作信息
+function  getHandleStr(value,row,index){
+    var  handstr = "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='loadxx(urls,"+value+",editFormID);'>[修 改]</a> "+
+                   "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='deletexx(urls,"+value+",editFormID);'>[删 除]</a>";
+    if(row.isactives==1){
+ 	     handstr += "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='changestat(urls,"+value+",0,\"是否禁用\",editFormID);'>[禁 用]</a>&nbsp;&nbsp;";
+    }else{
+ 	     handstr += "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='changestat(urls,"+value+",1,\"是否启用\",editFormID);'>[启 用]</a>&nbsp;&nbsp;";
+    }
+    return  handstr;
 }

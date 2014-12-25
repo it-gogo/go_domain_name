@@ -33,6 +33,22 @@
                     	</li>
                     </ul>
                 </div>
+                <div title="Title1"  data-options="selected:true" style="margin: 0px;padding: 0px;" >
+                    <ul style="list-style-type:none"> 
+                    	<li>
+                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanage/hmenuAction!findList.action');"  >
+	                    		<img src=css/admin/images/Menu_management.png />
+	                    		<label>角色管理</label>
+                    		</a>
+                    	</li>
+                    	<li>
+                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanage/troleAction.action');"  >
+	                    		<img src=css/admin/images/Menu_management.png />
+	                    		<label>角色管理</label>
+                    		</a>
+                    	</li>
+                    </ul>
+                </div>
             </div>
         </div>
         
@@ -65,7 +81,7 @@
         	var h =  $(window).height();	
 		    var theight = 75;//头部高度
 		    var  cheight =  h-62;//定义层的高度
-		     var ifheight = h-90;//定义IFrame的高度
+		     var ifheight = h-126;//定义IFrame的高度
             index++;
             if($("#tt").tabs('exists',titles)){
     	  $("#tt").tabs('select',titles);

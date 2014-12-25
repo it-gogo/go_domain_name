@@ -81,7 +81,7 @@ public abstract class SP3BaseDao<T,PK extends Serializable> implements ISP3BaseD
 			while(it.hasNext()){
 				String key = (String)it.next();
 			    String[] val = parame.get(key);
-			    if(!"curPage".equals(key)&&!"rows".equals(key)){
+			    if(!"page".equals(key)&&!"rows".equals(key)){
 				    if(val!=null){
 				    	if(val.length<2){
 				    		if(!"".equals(val[0])){
@@ -150,7 +150,7 @@ public abstract class SP3BaseDao<T,PK extends Serializable> implements ISP3BaseD
 				    		//多个
 				    	}
 				    }
-			    }else if("curPage".equals(key)){
+			    }else if("page".equals(key)){
 			    	sqlBean.setCurPage(Integer.parseInt(val[0]));
 			    }else if("rows".equals(key)){
 			    	sqlBean.setRows(Integer.parseInt(val[0]));

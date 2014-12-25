@@ -218,16 +218,20 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	}
 	
 	public String ajaxList(){
-		Map<String,String[]>  parame = ContextUtil.getHttpParame();
-		String csql = "Select count(*) from "+vo.getClass().getName()+"  Where 1=1";
-		String sql = "  From "+vo.getClass().getName()+" as a Where 1=1 ";
-		SqlBean sqlBean = baseDao.createSQL(sql, csql, parame, null);
-		PageBean  pageBean = baseDao.getH3DbManager().findList(sqlBean);
-		JSONObject  res = new JSONObject();
-		res.put("total", "");
-		res.put("rows", "");
-		this.ajaxJson(res.toJSONString());
-//		this.ajaxJson(JSONUtil.objToJSonStr(pageBean));
+		try {
+			Map<String,String[]>  parame = ContextUtil.getHttpParame();
+			System.out.println(vo.getClass().getName());
+			String csql = "Select count(*) from "+vo.getClass().getName()+"  Where 1=1";
+			String sql = "  From "+vo.getClass().getName()+" as a Where 1=1 ";
+			SqlBean sqlBean = baseDao.createSQL(sql, csql, parame, null);
+			PageBean  pageBean = baseDao.getH3DbManager().findList(sqlBean);
+			JSONObject  res = new JSONObject();
+			res.put("total", pageBean.getAllRow());
+			res.put("rows", JSONUtil.listToArray(pageBean.getList()));
+			this.ajaxJson(res.toJSONString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "ajax";
 	}
 	

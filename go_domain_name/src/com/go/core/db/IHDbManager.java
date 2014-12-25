@@ -3,6 +3,8 @@ package com.go.core.db;
 import java.io.Serializable;
 import java.util.List;
 
+import org.json.simple.JSONObject;
+
 import com.go.common.model.PageBean;
 import com.go.common.model.SqlBean;
 
@@ -165,6 +167,7 @@ public interface IHDbManager<T,PK extends Serializable>  {
 			final Object... parame);
 	
 	public PageBean<T> findList(SqlBean sqlBean);
+	
 	
 	/**
 	 * 删除

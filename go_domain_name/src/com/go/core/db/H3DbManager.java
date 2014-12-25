@@ -7,11 +7,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.hibernate.FlushMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.json.simple.JSONObject;
 
 import com.go.common.SqlConstant;
 import com.go.common.model.PageBean;
