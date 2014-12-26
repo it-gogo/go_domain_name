@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.alibaba.fastjson.JSONObject;
@@ -28,6 +29,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @param <T>
  */
 @Controller
+@Scope("prototy")
 public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBaseAction<T,String>,Serializable {
 	
 	private static final long serialVersionUID = 1L;
