@@ -26,7 +26,7 @@
                     		</a>
                     	</li>
                     	<li>
-                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','sysmanage/troleAction.action');"  >
+                    		<a href="javascript:void(0);" onclick="addPanel('104101','角色1管理','sysmanage/huserAction!redirect.action');"  >
 	                    		<img src=css/admin/images/Menu_management.png />
 	                    		<label>角色管理</label>
                     		</a>
@@ -71,7 +71,7 @@
                     </table>
                 </div>
             </div> -->
-		    <div id="tt" class="easyui-tabs" data-options="tools:'#tab-tools'" style="width:100%;height:100%;">
+		    <div id="mainPanel" class="easyui-tabs" data-options="tools:'#tab-tools'" style="width:100%;height:100%;">
 		    </div>
         </div>
     </div>
@@ -81,29 +81,40 @@
         	var h =  $(window).height();	
 		    var theight = 75;//头部高度
 		    var  cheight =  h-62;//定义层的高度
-		     var ifheight = h-126;//定义IFrame的高度
+		     var ifheight = h-120;//定义IFrame的高度
             index++;
-            if($("#tt").tabs('exists',titles)){
-    	  $("#tt").tabs('select',titles);
-    	   var currTab = $('#tt').tabs('getTab', titles),  
+            if($("#mainPanel").tabs('exists',titles)){
+    	  $("#mainPanel").tabs('select',titles);
+    	   var currTab = $('#mainPanel').tabs('getTab', titles),  
              iframe = $(currTab.panel('options').content),  
             content = '<iframe scrolling="auto" frameborder="0"  src="' + iframe.attr('src') + '" style="width:100%;height:100%;"></iframe>';  
-          $('#tt').tabs('update', {tab: currTab, options: {content: content, closable: true}}); 
-          /* $('#tt').tabs('updateIframeTab', {tab: currTab, options: {content: content, closable: true},which:titles});  */
+        /*   $('#mainPanel').tabs('update', {tab: currTab, options: {content: content, closable: true}});  */
+          $('#mainPanel').tabs('updateIframeTab', {tab: currTab, options: {content: content, closable: true},which:titles}); 
        }else{
-            $('#tt').tabs('add',{
+          /*   $('#mainPanel').tabs('add',{
                 title: titles,
-                /* content: '<div style="padding:10px">Content'+index+'</div>', */
                 content:'<iframe id="t" scrolling="yes" frameborder="0"  src='+action+' width="100%" height="'+ifheight+'"></iframe>',
                 closable: true
-            });
+            }); */
+             var count = 0;
+       		$("#mainPanel").tabs('addIframeTab',{
+				tab:{
+                     id:cdbh,
+					title: titles,
+					content:'<iframe id="t"  scrolling="yes" frameborder="0"  src="'+action+'" width="100%" height="'+ifheight+'"></iframe>',
+					closable: true,
+					border:false,
+					fit:true
+                },
+				iframe:{src:action}
+			});
             }
         }
         function removePanel(){
-            var tab = $('#tt').tabs('getSelected');
+            var tab = $('#mainPanel').tabs('getSelected');
             if (tab){
-                var index = $('#tt').tabs('getTabIndex', tab);
-                $('#tt').tabs('close', index);
+                var index = $('#mainPanel').tabs('getTabIndex', tab);
+                $('#mainPanel').tabs('close', index);
             }
         }
     </script>

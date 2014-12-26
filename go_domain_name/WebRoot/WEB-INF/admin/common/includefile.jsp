@@ -12,6 +12,7 @@
 
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/admin/common/mygrids.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/admin/common/myform.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/admin/common/tree.js"></script>
 <script type="text/javascript">
  $(document).ready(function(){
       $.ajaxSetup ({

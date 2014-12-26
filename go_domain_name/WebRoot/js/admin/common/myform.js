@@ -21,11 +21,17 @@ function  getHandleStr(value,row,index){
 
 var url;
 var submitMethod;
+var treecheckbox=false;
 //打开添加数据窗口
 function addxx(eDialog,eForm){
-    $("#"+eDialog).dialog("open");
-    $("#"+eForm).form('clear');
-    submitMethod = url+"!addxx.action";
+	var ok=true;
+    if(typeof(addBefore)=="function"){
+    	ok=addBefore(eDialog,eForm);
+    }
+    if(ok){
+    	$("#"+eDialog).dialog("open");
+    	submitMethod = url+"!addxx.action";
+    }
 }
 //打开修改数据窗口
 function updatexx(eDialog,id,eForm){
@@ -46,6 +52,7 @@ function savexx(eDialog,eForm){
             if (result.status==0){
                 
             } else {
+            	$("#"+eForm).form('clear');
                 $('#'+eDialog).dialog('close');        // close the dialog
                 $('#grids').datagrid('reload');    // reload the user data
             }
@@ -121,16 +128,18 @@ function  getQueryParame(formId){
  	 var  queStr = new Object();
  	if(t == 'text' || t == 'hidden'|| t == 'password'||t =='textarea' || tag=='textarea'){
  	 if(ids!=""&&ids!=null){
- 		 queStr[ids] = this.value;
- 	     array[array.length] = queStr;
+ 		res[ids]=this.value
+// 		 queStr[ids] = this.value;
+// 	     array[array.length] = queStr;
  	 }
 
  	}else if(t == 'select-one'){
  		 
  		 if(ids!=""&&ids!=null){
  			 var sval = $("#"+ids,curObj).combobox("getValue");
- 			 queStr[ids] = this.value;
- 	 	   array[array.length] = queStr;
+// 			 queStr[ids] = this.value;
+// 	 	   array[array.length] = queStr;
+ 	 	   	res[ids]=this.value;
  		 }
  	}
  	
@@ -138,6 +147,6 @@ function  getQueryParame(formId){
    //queStr["ajaxFlag"] = "XMLHttpRequest";//设置AJAX请求参数
  //  res["gt_json"] = $.toJSON(array);
    //alert($.toJSON(res));
-//   alert($.toJSON(array))
-   return  eval("("+$.toJSON(array)+")");
+//   alert($.toJSON(res))
+   return  eval("("+$.toJSON(res)+")");
 }

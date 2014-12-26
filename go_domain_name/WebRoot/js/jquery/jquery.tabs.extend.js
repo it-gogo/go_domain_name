@@ -51,7 +51,7 @@ $.extend($.fn.tabs.methods, {
                     //Do nothing
                 }
                 $frame.remove();
-                if($.browser.msie){
+                if($.browser){//$.browser.msie
                     CollectGarbage();
                 }
             }
