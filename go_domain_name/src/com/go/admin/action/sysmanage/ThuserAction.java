@@ -1,9 +1,11 @@
 package com.go.admin.action.sysmanage;
 
 import org.apache.struts2.convention.annotation.ParentPackage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.go.admin.dao.ThuserDao;
 import com.go.core.action.ST2BaseAction;
 import com.go.po.Thuser;
 
@@ -12,19 +14,15 @@ import com.go.po.Thuser;
 @Scope("prototype")
 public class ThuserAction extends ST2BaseAction<Thuser, String> {
     
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	private Thuser vo = new Thuser();
 	
-//	@Autowired
-//	private ThuserDao baseDao;
+	@Autowired
+	private ThuserDao baseDao;
 
 	public ThuserAction(){
-		super.setVo(this.getVo());
-//		super.setBaseDao(baseDao);
+//		super.setVo(this.getVo());
+		System.out.println(this.getVo().getClass().getName());
 	}
 	
 	
@@ -34,10 +32,10 @@ public class ThuserAction extends ST2BaseAction<Thuser, String> {
 	public void setVo(Thuser vo) {
 		this.vo = vo;
 	}
-//	public ThuserDao getBaseDao() {
-//		return baseDao;
-//	}
-//	public void setBaseDao(ThuserDao baseDao) {
-//		this.baseDao = baseDao;
-//	}
+	public ThuserDao getBaseDao() {
+		return baseDao;
+	}
+	public void setBaseDao(ThuserDao baseDao) {
+		this.baseDao = baseDao;
+	}
 }

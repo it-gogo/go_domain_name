@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import com.go.common.model.BaseVo;
-import com.go.common.model.PageBean;
 import com.go.common.model.SqlBean;
 import com.go.common.util.Util;
 import com.go.core.db.IHDbManager;
@@ -21,8 +21,8 @@ import com.go.core.db.IHDbManager;
  *
  * @param <T>
  */
-@Repository("baseDao")
-public abstract class SP3BaseDao<T,PK extends Serializable> implements ISP3BaseDao<T,PK> {
+@Repository(value="baseDao")
+public  class SP3BaseDao<T,PK extends Serializable> implements ISP3BaseDao<T,PK> {
 
 	@Autowired
 	private  IHDbManager<T,PK>  h3DbManager;
@@ -63,7 +63,13 @@ public abstract class SP3BaseDao<T,PK extends Serializable> implements ISP3BaseD
 		return entity;
 	}
 	
-	
+	public SqlBean createSqlBean(BaseVo vo,Map<String,String[]>  parame){
+		System.out.println(vo.getClass().getName());
+		String csql = "Select count(*) from "+vo.getClass().getName()+"  Where 1=1";
+		String sql = "  From "+vo.getClass().getName()+" as a Where 1=1 ";
+		SqlBean sqlBean = this.createSQL(sql, csql, parame, null);
+		return sqlBean;
+	}
 	
 	/**
 	 * 创建SQL 
@@ -210,5 +216,23 @@ public abstract class SP3BaseDao<T,PK extends Serializable> implements ISP3BaseD
 		return this.getH3DbManager().getEntityById(c, id);
 	}
 	
+	
+	/**
+	 * 取得要查询的SQL
+	 * @return
+	 */
+	public  String  getSql(BaseVo  vo ){
+		String sql = " From "+vo.getClass().getName()+   " Where 1=1 ";
+		return sql;
+	}
+	
+	/**
+	 * 取得查找总记录数数的SQL
+	 * @return
+	 */
+	public  String  getCountSql(BaseVo  vo ){
+		String sql = " Select count(*)   From "+vo.getClass().getName()+"  Where 1=1";
+		return  sql;
+	}
 
 }

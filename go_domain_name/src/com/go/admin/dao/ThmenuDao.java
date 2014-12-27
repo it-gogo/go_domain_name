@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.go.core.dao.SP3BaseDao;
 import com.go.po.Thmenu;
 
-@Repository
+@Repository(value="hmenuDao")
 public class ThmenuDao extends SP3BaseDao<Thmenu, String> {
 
 	@Override

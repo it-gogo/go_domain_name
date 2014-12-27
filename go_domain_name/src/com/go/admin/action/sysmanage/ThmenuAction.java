@@ -16,19 +16,16 @@ import com.go.po.Thmenu;
 @Scope("prototype")
 public class ThmenuAction extends ST2BaseAction<Thmenu, String> {
     
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	private Thmenu vo = new Thmenu();
+	
 	
 	@Autowired
 	private ThmenuDao baseDao;
 
 	public ThmenuAction(){
-		super.setVo(this.getVo());
-		super.setBaseDao(baseDao);
+//		super.setVo(this.getVo());
+//		super.setBaseDao(baseDao);
 	}
 	
 	

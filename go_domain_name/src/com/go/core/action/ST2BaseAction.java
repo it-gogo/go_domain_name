@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.go.common.model.BaseVo;
@@ -28,11 +26,9 @@ import com.opensymphony.xwork2.ActionSupport;
  *
  * @param <T>
  */
-@Controller
-@Scope("prototy")
-public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBaseAction<T,String>,Serializable {
+public  class ST2BaseAction<T,PK> extends ActionSupport implements IBaseAction<T,String>,Serializable {
 	
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 	
 	private  int  page=1;//当前页
 	
@@ -52,7 +48,8 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	
 	private BaseVo vo=new BaseVo();
 	
-	@Autowired
+	@Resource
+	@Qualifier("baseDao")
 	private SP3BaseDao<BaseVo,String> baseDao;
 	
 
@@ -64,9 +61,9 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 		this.parame = parame;
 	}
 
-	public static long getSerialversionuid() {
+	/*public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
+	}*/
 
 	public String getId() {
 		return id;
@@ -136,9 +133,6 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 		return baseDao;
 	}
 
-	public void setBaseDao(SP3BaseDao baseDao) {
-		this.baseDao = baseDao;
-	}
 
 	// AJAX输出，返回null
 	public String ajax(String content, String type) {
@@ -219,14 +213,18 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	}
 	
 	public String ajaxList(){
+		System.out.println(ContextUtil.getHttpRequest().getRequestURI());
 		try {
 			Map<String,String[]>  parame = ContextUtil.getHttpParame();
-			System.out.println(parame);
-			String csql = "Select count(*) from "+vo.getClass().getName()+"  Where 1=1";
-			String sql = "  From "+vo.getClass().getName()+" as a Where 1=1 ";
-			System.out.println(sql);
-			SqlBean sqlBean = baseDao.createSQL(sql, csql, parame, null);
-			PageBean  pageBean = baseDao.getH3DbManager().findList(sqlBean);
+//			String csql = "Select count(*) from "+vo.getClass().getName()+"  Where 1=1";
+			System.out.println(this.getVo().getClass().getName());
+			String csql =this.getBaseDao().getCountSql(this.getVo());
+			String sql =this.getBaseDao().getSql(this.getVo());
+			SqlBean sqlBean = this.getBaseDao().createSQL(sql, csql, parame, null);
+			
+//			SqlBean sqlBean =baseDao.createSqlBean(vo,parame);
+			
+			PageBean  pageBean = this.getBaseDao().getH3DbManager().findList(sqlBean);
 			JSONObject  res = new JSONObject();
 			res.put("total", pageBean.getAllRow());
 			res.put("rows", JSONUtil.listToArray(pageBean.getList()));
@@ -245,7 +243,7 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	 */
 	public String addxx(){
 		try {
-			baseDao.save(vo);
+			this.getBaseDao().save(this.getVo());
 			setReturnMessage("1","添加成功");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -259,7 +257,7 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	public String updatexx(){
 		try {
 			
-			baseDao.update(vo);
+			this.getBaseDao().update(this.getVo());
 			setReturnMessage("1","修改成功");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -272,8 +270,8 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	 */
 	public String loadxx(){
 		try {
-			vo=baseDao.loadEntity(vo.getClass(), vo.getId());
-			this.ajaxJson(JSONUtil.toJSONObjectVo(vo).toJSONString());
+			this.setVo((BaseVo)this.getBaseDao().loadEntity(this.getVo().getClass(), this.getVo().getId()));
+			this.ajaxJson(JSONUtil.toJSONObjectVo(this.getVo()).toJSONString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -287,7 +285,7 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	public String deletexx(){
 		Map<String,Object> map=Util.operateStr(this.getId());
 		Object[] parame=(Object[]) map.get("parame");
-		baseDao.getH3DbManager().deleteEntityByParame("delete "+vo.getClass().getName()+" where id "+map.get("hql"), parame);
+		this.getBaseDao().getH3DbManager().deleteEntityByParame("delete "+this.getVo().getClass().getName()+" where id "+map.get("hql"), parame);
 		setReturnMessage("1","删除成功");
 		return "ajax";
 	}
@@ -297,14 +295,14 @@ public abstract class ST2BaseAction<T,PK> extends ActionSupport implements IBase
 	 * @return
 	 */
 	public String changeStatus(){
-		String isactives=vo.getIsactives();
+		String isactives=this.getVo().getIsactives();
 		if("1".equals(isactives)){//当前为启动状态
 			setReturnMessage("1","启用成功");
 		}else{//当前为禁用状态
 			setReturnMessage("1","禁用成功");
 		}
 		Object[] parame={isactives,vo.getId()};
-		baseDao.getH3DbManager().updateForHql("update "+vo.getClass().getName()+" set isactives=? where id=?", parame);
+		this.getBaseDao().getH3DbManager().updateForHql("update "+this.getVo().getClass().getName()+" set isactives=? where id=?", parame);
 		return "ajax";
 	}
 	

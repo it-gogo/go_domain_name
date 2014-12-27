@@ -9,12 +9,8 @@ import com.go.common.util.JSONUtil;
  * @author Administrator
  *
  */
-public class BaseVo implements Serializable{
+public class BaseVo {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5409849352645179237L;
 
 	//主键
 	private  String  id;

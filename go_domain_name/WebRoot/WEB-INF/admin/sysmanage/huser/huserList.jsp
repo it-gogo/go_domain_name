@@ -16,7 +16,7 @@
      </form>
  </div>
 
-<table id="grids"   class="easyui-datagrid"   toolbar="#toolbar" pagination="true"  fit="true" url="hmenuAction!ajaxList.action"
+<table id="grids"   class="easyui-datagrid"   toolbar="#toolbar" pagination="true"  fit="true" url=url+"!ajaxList.action"
             rownumbers="true" fitColumns="true" singleSelect="true"  >
         <thead>
             <tr>
