@@ -10,7 +10,7 @@ function  closeForm(dialogID,formID){
 //操作信息
 function  getHandleStr(value,row,index){
     var  handstr = "<a href=\"javascript:void(0)\" class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onclick=\"updatexx('eDialog','"+value+"','eForm');\">[修 改]</a> "+
-                   "<a href=\"javascript:void(0)\" class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onclick=\"deletexx(urls,"+value+",editFormID);\">[删 除]</a>";
+                   "<a href=\"javascript:void(0)\" class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onclick=\"deletexx('"+value+"');\">[删 除]</a>";
     if(row.isactives==1){
  	     handstr += "<a href=\"javascript:void(0)\" class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onclick=\"changestatue('"+value+"',0,'是否禁用');\">[禁 用]</a>&nbsp;&nbsp;";
     }else{
@@ -61,12 +61,13 @@ function savexx(eDialog,eForm){
     });
 }
 //删除数据
-function deletexx(){
-    var row = $('#grids').datagrid('getSelected');
+function deletexx(id){
+//    var row = $('#grids').datagrid('getSelected');
+	var row=true;
     if (row){
         $.messager.confirm('询问','确定删除该数据?',function(r){
             if (r){
-                $.post(url+"!deletexx.action",{id:row.id},function(result){
+                $.post(url+"!deletexx.action",{id:id},function(result){
                     if (result.status==1){
                         $('#grids').datagrid('reload');    // reload the user data
                     } else {
@@ -79,6 +80,42 @@ function deletexx(){
             }
         });
     }
+}
+//删除数据
+function deleteAll(){
+    var row = $('#grids').datagrid('getSelected');
+    var sns =  getCheckeds("grids");
+    if (sns!=""){
+        $.messager.confirm('询问','确定删除该数据?',function(r){
+            if (r){
+                $.post(url+"!deletexx.action",{id:sns},function(result){
+                    if (result.status==1){
+                        $('#grids').datagrid('reload');    // reload the user data
+                    } else {
+                        $.messager.show({    // show error message
+                            title: '提示',
+                            msg: result.msg
+                        });
+                    }
+                },'json');
+            }
+        });
+    }else{
+    	 $.messager.alert('提示',"至少选择一个数据。");
+    }
+}
+
+//获得表格前多选框信息
+function  getCheckeds(gridID){
+    var  r = $("#"+gridID).datagrid('getChecked');
+    var  sns = "";
+    for(var i=0;i<r.length;i++){
+       sns += r[i].id+",";
+    }
+    if(sns.length!=0){
+       sns = sns.substring(0,sns.length-1);
+    }
+    return sns;
 }
 
 //启用禁用操作

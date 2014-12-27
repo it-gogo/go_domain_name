@@ -7,19 +7,19 @@ public class MenuPo {
    
 	private  String id;
 	
-	private  String name;
+	private  String mname;
 	
 	private  String url;
 	
 	private  String scriptEvent;
 	
-	private String imgurl;//图标路径
+	private String icon;//图标路径
 	
 	private  MenuChildren  children = new MenuChildren();
 	
 	private  String  pid;
 	
-	private  int step;
+	private  int series;
 	
 
 
@@ -48,42 +48,38 @@ public class MenuPo {
 	}
 
 
-
-	public String getImgurl() {
-		return imgurl;
+	public String getMname() {
+		return mname;
 	}
 
 
 
-	public void setImgurl(String imgurl) {
-		this.imgurl = imgurl;
+	public void setMname(String mname) {
+		this.mname = mname;
 	}
 
 
 
-	public int getStep() {
-		return step;
+	public String getIcon() {
+		return icon;
 	}
 
 
 
-	public void setStep(int step) {
-		this.step = step;
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 
 
-
-
-
-	public String getName() {
-		return name;
+	public int getSeries() {
+		return series;
 	}
 
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSeries(int series) {
+		this.series = series;
 	}
 
 
@@ -126,24 +122,22 @@ public class MenuPo {
 	public String  toString(){
 		String res = "";
 		List<MenuPo>  list = children.getList();
-		if(step==0){
-			res +="<ul id=\"navigation\">";
-		}else if(step==1){
-			res+="<li> <a class=\"head\">"+name+"</a>";
-			res +="<ul>";
-		}else if(step==2){
-			res +=" <li><a href=\""+url+"\" target=\"rightFrame\">"+name+"</a></li>";
+		if(series==1){
+			res +="<div title=\""+mname+"\"  data-options=\"selected:true\" style=\"margin: 0px;padding: 0px;\" ><ul style=\"list-style-type:none\">";
+		}else if(series==2){
+			res+="<li><a href=\"javascript:void(0);\" onclick=\"addPanel('"+id+"','"+mname+"','"+url+"');\"  >";
+			if(icon==null || "".equals(icon)){
+				icon="../css/admin/images/Menu_management.png";
+			}
+			res +="<img src="+icon+" />";
+			res+="<label>"+mname+"</label></a></li>";
 		}
 		for(int i=0;i<list.size();i++){
 			MenuPo  p = list.get(i);
 		    res += p;
 		}
-		if(step==1){
-			res +="</ul>";
-			res +=" </li>";
-			
-		}else if(step==0){
-			res +=" </li>";
+		if(series==1){
+			res +="</ul></div>";
 		}
 		return res;
 	}

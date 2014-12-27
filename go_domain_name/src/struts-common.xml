@@ -67,7 +67,27 @@
 	 
 </package>
 
-
+<!-- 系统信息配置 -->
+<package name="common" extends="basePackage" namespace="/common">
+	
+	<!-- 前台公共Action操作 -->
+	<action name="hcommonAction" class="hcommonAction">
+		<result name="lookImgPage">/WEB-INF/admin/common/lookImgPage.jsp</result>
+	</action>
+	<!-- 后台登陆Action -->
+	<action name="hloginAction" class="hloginAction">
+		<result name="login">/WEB-INF/admin/common/login.jsp</result>
+		<result name="main"  type="redirectAction">
+			<param name="actionName">hmainAction!findMain</param>
+		</result>
+	</action>
+	<!-- 后台主页 -->
+	<action name="hmainAction" class="hmainAction">
+		<result name="main">/WEB-INF/admin/common/main.jsp</result>
+	</action>
+    
+   
+</package>
 
  
 </struts>

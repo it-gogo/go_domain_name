@@ -19,7 +19,7 @@ public class BaseVo {
 	private  String  isactives;
 	
 	//描述
-	private  String description;
+	private  String remark;
 
 	
 
@@ -42,14 +42,15 @@ public class BaseVo {
 		this.isactives = isactives;
 	}
 
-	public String getDescription() {
-		return description;
+	
+	public String getRemark() {
+		return remark;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
-	
+
 	public String toString(){
 		if(this==null){
 			return "";

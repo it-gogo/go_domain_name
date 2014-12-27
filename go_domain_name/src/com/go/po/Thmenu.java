@@ -1,5 +1,8 @@
 package com.go.po;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Thmenu entity. @author MyEclipse Persistence Tools
  */
@@ -12,15 +15,18 @@ public class Thmenu extends com.go.common.model.BaseVo implements
 	private String id;
 	private String pid;
 	private String mname;
+	private String pname;
 	private String urls;
 	private String mcode;
 	private String pmcode;
 	private Integer series;
 	private String scriptname;
 	private String icon;
-	private String description;
+	private String remark;
 	private String isactives;
 	private Integer seq;
+	
+	private List<Thmenu> list=new ArrayList<Thmenu>();
 
 	// Constructors
 
@@ -36,7 +42,7 @@ public class Thmenu extends com.go.common.model.BaseVo implements
 	/** full constructor */
 	public Thmenu(String pid, String mname, String urls, String mcode,
 			String pmcode, Integer series, String scriptname, String icon,
-			String description, String isactives, Integer seq) {
+			String remark, String isactives, Integer seq) {
 		this.pid = pid;
 		this.mname = mname;
 		this.urls = urls;
@@ -45,7 +51,7 @@ public class Thmenu extends com.go.common.model.BaseVo implements
 		this.series = series;
 		this.scriptname = scriptname;
 		this.icon = icon;
-		this.description = description;
+		this.remark = remark;
 		this.isactives = isactives;
 		this.seq = seq;
 	}
@@ -125,12 +131,12 @@ public class Thmenu extends com.go.common.model.BaseVo implements
 	}
 
 
-	public String getDescription() {
-		return description;
+	public String getRemark() {
+		return remark;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 	public String getIsactives() {
@@ -147,6 +153,22 @@ public class Thmenu extends com.go.common.model.BaseVo implements
 
 	public void setSeq(Integer seq) {
 		this.seq = seq;
+	}
+
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
+	public List<Thmenu> getList() {
+		return list;
+	}
+
+	public void setList(List<Thmenu> list) {
+		this.list = list;
 	}
 
 }

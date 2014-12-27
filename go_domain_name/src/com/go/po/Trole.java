@@ -12,6 +12,7 @@ public class Trole extends com.go.common.model.BaseVo implements
 	private String id;
 	private String rname;
 	private String creator;
+	private String remark;
 	private String isactives;
 
 	// Constructors
@@ -35,6 +36,14 @@ public class Trole extends com.go.common.model.BaseVo implements
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 	public String getRname() {

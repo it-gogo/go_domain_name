@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <html>
 <head>
-
 </head>
 
 
@@ -12,17 +11,18 @@
 		<a href="javascript:void(0)" class="easyui-linkbutton"  iconCls="icon-search"  plain="true"  onclick="query('grids','qForm')" >查询</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton"  iconCls="icon-reload"  plain="true"  onclick="resetForm('qForm')" >重置</a>
 	     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addxx('eDialog','eForm')">添加</a>
-	     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deletexx()">删除</a>
+	     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteAll()">删除</a>
      </form>
  </div>
 
 <table id="grids"   class="easyui-datagrid"   toolbar="#toolbar" pagination="true"  fit="true" url="hmenuAction!ajaxList.action"
-            rownumbers="true" fitColumns="true" singleSelect="true"  >
+            rownumbers="true" fitColumns="true" singleSelect="false"  >
         <thead>
             <tr>
             	<th field="chk" width="20" align='center' checkbox=true  ></th>
                 <th field="mcode" width="50">菜单编号</th>
                 <th field="mname" width="50">菜单名称</th>
+                <th field="pname" width="50">父名称</th>
                 <th field="urls" width="50">链接地址</th>
                 <th field="series" width="50">级数</th>
                 <th field="id" width="50"  formatter='getHandleStr'>操作</th>

@@ -9,8 +9,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Repository;
 
+import com.go.common.model.MenuPo;
 import com.go.core.dao.SP3BaseDao;
 import com.go.po.Thmenu;
+import com.go.po.Thuser;
 
 @Repository(value="hmenuDao")
 public class ThmenuDao extends SP3BaseDao<Thmenu, String> {
@@ -142,4 +144,83 @@ public class ThmenuDao extends SP3BaseDao<Thmenu, String> {
     	return root;
 	}
 
+	/**
+	 * 取得菜单
+	 * @param vo
+	 * @return
+	 */
+	public  List<Thmenu>  getMenulistForSysUser(Thuser vo){
+		String  userId = vo.getId();
+		String sql = " From Tbmenu Where isactives=1  " +
+				     " and id in (Select  menuid From  Tauthority Where roleid in(" +
+				     " Select roleid From Tbuserrole Where buserid=?))"+
+				     " Order by seq asc,id desc";
+		Object[] parame={userId};
+		sql = " From Thmenu  Order by seq asc";
+		List<Thmenu> obj = this.getH3DbManager().findList(sql);
+//		List<Tbmenu> obj = this.getH3DbManager().findList(sql, parame);
+		List<Thmenu> list = new ArrayList();
+		Thmenu  po = new Thmenu();
+		if((obj==null||obj.size()<2)){
+			 po = new Thmenu();
+			 po.setPname("系统管理");
+			 po.setId("1");
+			 po.setPid("0");
+			 po.setUrls("#");
+			 po.setMname("系统管理");
+			 list.add(po);
+//			 po = new MenuPo();
+//			 po.setMname("角色管理");
+//			 po.setId("2");
+//			 po.setPid("1");
+//			 po.setScriptEvent("addPanel");
+//			 po.setUrl("sysmanager/troleAction.action");
+//			 po.setSeries(2);
+//			 list.add(po);
+		}else{
+			//存储临时对象
+	    	Map<String,Thmenu>  tmpMap = new LinkedHashMap<String,Thmenu>();
+			for(int i=0;i<obj.size();i++){
+			    Thmenu  mvo = obj.get(i);
+				tmpMap.put(mvo.getMcode(),mvo);
+			}
+			for(int i=0;i<obj.size();i++){
+			    Thmenu  mvo = obj.get(i);
+				tmpMap.put(mvo.getMcode(),mvo);
+				if("0".equals(mvo.getPmcode())){
+					 list.add(tmpMap.get(mvo.getMcode()));
+				}else{
+					tmpMap.get(mvo.getPmcode()).getList().add(mvo);
+				}
+			}
+		}
+		return list;
+	}
+	
+	public String createMenuTree1(List<MenuPo> array){
+		//存储临时对象
+    	Map  tmpMap = new LinkedHashMap();
+    	//结果返回值
+    	JSONArray root = new JSONArray();
+    	for(int i=0;i<array.size();i++){
+    		MenuPo  jsonobj = array.get(i);
+    		String  bh = (String) jsonobj.getId();
+    		tmpMap.put(bh,jsonobj);
+    	}
+    	for(int i=0;i<array.size();i++){
+
+    		MenuPo  jsonobj = array.get(i);
+    		String bh = (String) jsonobj.getId();
+    		String fbh = (String) jsonobj.getPid();
+    		if("0".equals(fbh)){
+    			root .add(tmpMap.get(bh));
+    			//根
+    		}else{
+    			if(tmpMap.get(fbh)!=null){
+    				 ((MenuPo)tmpMap.get(fbh)).getChildren().addChildren((MenuPo)tmpMap.get(bh));
+    			}
+    	    }
+    	}
+    	return root.toJSONString();
+	}
 }

@@ -16,6 +16,9 @@
         <property name="mname" type="java.lang.String">
             <column name="MNAME" length="100" />
         </property>
+         <property name="Pname" type="java.lang.String">
+            <column name="pNAME" length="100" />
+        </property>
         <property name="urls" type="java.lang.String">
             <column name="URLS" length="100" />
         </property>
@@ -34,8 +37,8 @@
         <property name="icon" type="java.lang.String">
             <column name="ICON" length="100" />
         </property>
-        <property name="description" type="java.lang.String">
-            <column name="DESCRIPTION" length="100" />
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK" length="100" />
         </property>
         <property name="isactives" type="java.lang.String">
             <column name="ISACTIVES" length="1" />

@@ -17,6 +17,12 @@ import com.go.po.Thmenu;
 public class ThmenuAction extends ST2BaseAction<Thmenu, String> {
     
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	private Thmenu vo = new Thmenu();
 	
 	

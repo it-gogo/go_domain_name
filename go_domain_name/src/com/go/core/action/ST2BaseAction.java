@@ -212,7 +212,7 @@ public  class ST2BaseAction<T,PK> extends ActionSupport implements IBaseAction<T
 		return "list";
 	}
 	
-	public String ajaxList(){
+	public String ajaxList()throws Exception{
 		System.out.println(ContextUtil.getHttpRequest().getRequestURI());
 		try {
 			Map<String,String[]>  parame = ContextUtil.getHttpParame();
@@ -241,20 +241,16 @@ public  class ST2BaseAction<T,PK> extends ActionSupport implements IBaseAction<T
 	 * 去添加页码
 	 * @return
 	 */
-	public String addxx(){
-		try {
-			this.getBaseDao().save(this.getVo());
-			setReturnMessage("1","添加成功");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public String addxx() throws Exception {
+		this.getBaseDao().save(this.getVo());
+		setReturnMessage("1","添加成功");
 		return "ajax";
 	}
 	/**
 	 * 去修改页面
 	 * @return
 	 */
-	public String updatexx(){
+	public String updatexx()throws Exception{
 		try {
 			
 			this.getBaseDao().update(this.getVo());
@@ -268,10 +264,13 @@ public  class ST2BaseAction<T,PK> extends ActionSupport implements IBaseAction<T
 	 * 查询数据
 	 * @return
 	 */
-	public String loadxx(){
+	public String loadxx()throws Exception{
 		try {
-			this.setVo((BaseVo)this.getBaseDao().loadEntity(this.getVo().getClass(), this.getVo().getId()));
-			this.ajaxJson(JSONUtil.toJSONObjectVo(this.getVo()).toJSONString());
+			System.out.println();
+//			this.setVo((BaseVo)this.getBaseDao().loadEntity(this.getVo().getClass(), this.getVo().getId()));
+			vo=(BaseVo) this.getBaseDao().loadEntity(this.getVo().getClass(), this.getVo().getId());
+			System.out.println(vo);
+			this.ajaxJson(JSONUtil.toJSONObjectVo(vo).toJSONString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -282,7 +281,7 @@ public  class ST2BaseAction<T,PK> extends ActionSupport implements IBaseAction<T
 	 * 删除
 	 * @return
 	 */
-	public String deletexx(){
+	public String deletexx()throws Exception{
 		Map<String,Object> map=Util.operateStr(this.getId());
 		Object[] parame=(Object[]) map.get("parame");
 		this.getBaseDao().getH3DbManager().deleteEntityByParame("delete "+this.getVo().getClass().getName()+" where id "+map.get("hql"), parame);
@@ -294,14 +293,14 @@ public  class ST2BaseAction<T,PK> extends ActionSupport implements IBaseAction<T
 	 * 修改状态
 	 * @return
 	 */
-	public String changeStatus(){
+	public String changeStatus()throws Exception{
 		String isactives=this.getVo().getIsactives();
 		if("1".equals(isactives)){//当前为启动状态
 			setReturnMessage("1","启用成功");
 		}else{//当前为禁用状态
 			setReturnMessage("1","禁用成功");
 		}
-		Object[] parame={isactives,vo.getId()};
+		Object[] parame={isactives,this.getVo().getId()};
 		this.getBaseDao().getH3DbManager().updateForHql("update "+this.getVo().getClass().getName()+" set isactives=? where id=?", parame);
 		return "ajax";
 	}

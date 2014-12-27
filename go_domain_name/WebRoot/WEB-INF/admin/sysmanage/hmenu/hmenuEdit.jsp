@@ -29,7 +29,7 @@
 	    		</tr>
 	    		<tr>
 	    			<td align="right" class="td_left">描述:</td>
-	    			<td><textarea name="vo.description" id="description" style="width:250px;height:60px;"
+	    			<td><textarea name="vo.remark" id="remark" style="width:250px;height:60px;"
 	    			class="easyui-validatebox" data-options="validType:'maxLength[200]'" ></textarea></td>
 	    		</tr>
 	    		<tr>

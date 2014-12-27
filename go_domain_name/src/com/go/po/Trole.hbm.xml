@@ -16,6 +16,9 @@
         <property name="creator" type="java.lang.String">
             <column name="CREATOR" length="100" />
         </property>
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK" length="100" />
+        </property>
         <property name="isactives" type="java.lang.String">
             <column name="ISACTIVES" length="1" />
         </property>
