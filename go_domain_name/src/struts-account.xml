@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "struts-2.0.dtd">
+<struts>
+<!-- 前台会员信息 -->
+<package name="account" extends="basePackage" namespace="/account">
+	<!-- 前台登陆 -->
+	<action name="qloginAction"  class="qloginAction" >
+	   <result name="login">/WEB-INF/client/login.jsp</result>
+	</action>
+</package>
+
+</struts>

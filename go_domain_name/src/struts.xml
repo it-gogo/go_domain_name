@@ -35,5 +35,6 @@
 	<!-- 公共部分 -->
 	<include file="struts-common.xml"/>
 	<include file="struts-sysmanage.xml"/>  
-	
+	<include file="struts-client.xml"/>
+	<include file="struts-account.xml"/>
 </struts>

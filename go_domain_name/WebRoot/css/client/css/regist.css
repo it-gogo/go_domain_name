@@ -1,0 +1,79 @@
+input{border:1px solid #c7ccce;height:21px;line-height:21px;text-indent:3px;background:none;vertical-align:middle;}
+
+.regist_wrap{width:980px;margin:0px auto;text-align:left;overflow:hidden;position:relative;padding:2px;}
+.rwl{width:653px;border:1px solid #cecdcd;overflow:hidden;box-shadow:1px 2px 2px #dddee2;background:#fafbfc;float:left;}
+.regist_wrap h1{height:30px;position:absolute;left:0;top:0px;}
+.regist_wrap h1 .title{width:106px;background:url(../images/point_03.png) -1px top no-repeat;color:#fff;display:block;font:15px/30px 微软雅黑;text-indent:15px;}
+.regist{width:625px;padding-top:30px;margin-left:10px;}
+.regist p.hint{background:url(../images/regist_icos.png) 20px 1px no-repeat;line-height:21px;padding-left:36px;color:#fff;}
+.regist p.hint span{background:#afdcfa;padding:2px;border-radius:2px;}
+.regist table td{padding:15px 0 15px 15px;border-top:1px solid #fff;border-bottom:1px solid #e8e9ea;vertical-align:top;line-height:23px;border-left:1px solid #fff;}
+.regist table td.title{width:140px;padding-left:0;text-align:right;border-left:none;border-right:1px solid #e8e9ea;padding-right:15px;}
+.regist table td.title strong{color:#ff3000;padding:0 5px;font-size:12px;}
+.regist table td span.c_999{display:block;line-height:16px;color:#999;padding-top:2px;}
+.regist table td b,.regist table td i{display:inline-block;width:14px;height:14px;background:url(../images/regist_icos.png) left -21px;vertical-align:middle;display:none;}
+div.regist table td i{background:url(../images/regist_icos.png) left -35px;}
+.regist table td input{width:160px;margin-right:6px;padding-right:15px;}
+.regist table td .yzm{border:1px solid #e8e9ea;}
+.regist .tab{overflow:hidden;border-top:1px solid #e8e9ea;margin-top:10px;border-bottom:1px solid #fff;}
+.regist .btn{padding:15px;}
+.regist table input.current{background:#fff;border-color:#009ed5; }
+.regist table #pwd_yz{display:none;padding-left:62px;background:url(../images/pwdyz_bg.png) left top no-repeat;color:#f19942;line-height:23px;}
+.regist table input.email{background:url(../images/regist_icos.png) 155px -91px no-repeat;}
+.regist table input.pwd{background:url(../images/regist_icos.png) 155px -49px no-repeat;}
+.regist table input.name{background:url(../images/regist_icos.png) 155px -70px no-repeat;}
+.regist p.btn input{display:block;width:172px;height:32px;text-align:center;font:16px/32px 微软雅黑;color:#f1f1f1;background:url(../images/button1_03.png) -1px 0 no-repeat;margin-left:160px;}
+.regist p.btn input:hover{color:#fff;}
+.regist p.btn{padding:15px;}
+
+.rwr{width:293px;float:right;}
+.rwr1{border:1px solid #cecdcd;box-shadow:1px 2px 2px #dddee2;}
+.rwr_title{height:32px;background:url(../images/rwr_title_bg.jpg) repeat-x;}
+.rwr_title span{display:block;font:14px/30px 微软雅黑;color:#fefffa;padding-left:15px;background:url(../images/regist_icos.png) 260px -112px no-repeat;}
+.rwr1 p.state{padding:15px;line-height:17px;margin-top:10px;}
+.rwr1 ul{padding:0 15px 25px 17px;font:14px/35px 微软雅黑;color:#459bd4;}
+.rwr1 a{display:block;width:220px;height:38px;margin: auto;background:url(../images/rwr_contact.jpg);}
+.rwr1 a.email{background-position:left bottom;margin-bottom:20px;}
+/*登录*/
+.login_wrap{width:980px;padding:2px 4px;overflow:hidden;text-align:left;margin:0 auto;}
+.lwl{width:510px;border:1px solid #d2d1d1;box-shadow:1px 2px 2px #dddee2;background:#f8f9fb;float:left;padding-bottom:10px;}
+.lwl h1{height:30px;font:15px/30px 微软雅黑;color:#edf7fe;padding-left:12px;background:#4ea9e5;background-image:-webkit-linear-gradient(#4ea9e5,#338fcd);background-image:-moz-linear-gradient(#4ea9e5,#338fcd);background-image:-ms-linear-gradient(#4ea9e5,#338fcd);background-image:linear-gradient(#4ea9e5,#338fcd);}
+.lwl .sm{line-height:17px;width:485px;margin:auto;padding:3px 0;border-bottom:1px solid #e2e3e4;margin-bottom:1px;}
+.lwl dl{height:54px}
+.lwl dl dt{width:26px;float:left;height:34px;padding:10px 10px 10px 24px;border-right:1px solid #fff;}
+.lwl dl dd{width:428px;border-left:1px solid #e6e7e9;float:left;line-height:17px;height:34px;padding:10px;}
+.lwl .odd{background:#f0f1f5;}
+.lwl .btn{width:485px;padding:13px 0;text-align:center;border-top:1px solid #e2e3e4;margin:auto;}
+.login_btn{display:inline-block;width:172px;height:32px;text-align:center;font:16px/31px 微软雅黑;color:#f7fafc;background:url(../images/button1_03.png) -1px top no-repeat;}
+.login_btn:hover{color:#fff;}
+.lwr{width:440px;border:1px solid #d2d1d1;box-shadow:1px 2px 2px #dddee2;float:right;background:#fefefe;}
+.lwr h1{color:#336799;background:#edf4fa;height:32px;font:15px/32px 微软雅黑;padding-left:12px;}
+.lwr .sm{height:40px;padding-left:12px;line-height:40px;border-bottom:1px solid #e2e3e4;}
+.lwr table{width:404px;margin-left:12px;}
+.lwr table td{padding:6px 0 2px 6px;line-height:25px;vertical-align:top;border-bottom:1px solid #f4f4f4;}
+.lwr table td.title{text-align:right;border-right:1px solid #f4f4f4;}
+.lwr table td input{width:180px;}
+.lwr table td input:hover{background:#fff;border-color:#009ed5;}
+.lwr button{cursor:pointer;border:none;}
+.lwr .btn{padding:40px 0 25px 180px;}
+.lwr .style{padding:8px 0 25px 180px;}
+.lwr .style a{display:inline-block;width:88px;height:30px;line-height:30px;text-indent:34px;background:url(../images/login_style_bg.jpg);}
+.lwr .style a.qq{background-position:right top;}
+.lwr .style a:hover{color:#4ea9e5;}
+
+/*找回密码*/
+.rwl p.title{font:14px/28px 微软雅黑;color:#fff;background:#edf5fa;border-bottom:1px solid #d6e7f2;}
+.rwl p.title span{display:block;width:90px;text-align:center;background:#489fd9;}
+.rwl p.ts{line-height:16px;color:#2c78ab;padding:3px 15px 3px 80px;margin-top:10px;border-top:1px solid #a5cfeb;border-bottom:1px solid #a5cfeb;background:#afdcfa;position:relative;}
+.rwl p.ts span{position:absolute;left:15px;}
+.zhmm_tab{width:620px;overflow:hidden;margin:10px auto;position:relative;}
+.zhmm_tab table{width:622px;position:relative;left:-1px;border-collapse:collapse;}
+.zhmm_tab td{border:1px solid #d8d9d9;padding:12px;vertical-align:top;}
+.zhmm_tab td.th{text-align:right;line-height:23px;}
+.zhmm_tab td.th strong{color:#ff3000;position:relative;top:3px;}
+.zhmm_tab input.email{background:url(../images/regist_icos.png) 155px -91px no-repeat;width:175px;}
+.zhmm_tab span.c_999{color:#999;display:block;padding-top:3px;}
+.zhmm_tab input:hover{border:1px solid #009ed5;background:#fff;}
+.zhmm_tab p.btn button{display:block;width:172px;height:32px;text-align:center;font:16px/32px 微软雅黑;color:#f1f1f1;background:url(../images/button1_03.png) -1px 0 no-repeat;margin-left:160px;border:none;cursor:pointer;}
+.zhmm_tab p.btn button:hover{color:#fff;}
+.zhmm_tab p.btn{padding:15px;}

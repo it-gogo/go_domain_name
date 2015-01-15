@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "struts-2.0.dtd">
+<struts>
+<!-- 前台基本信息 -->
+<package name="client" extends="basePackage" namespace="/client">
+	<!-- 前台首页 -->
+	<action name="qhomeAction"  class="qhomeAction" >
+	   <result name="home">/WEB-INF/client/home.jsp</result>
+	</action>
+	<!-- 前台买域名 -->
+	<action name="qbuyAction"  class="qbuyAction" >
+	   <result name="buy">/WEB-INF/client/buy.jsp</result>
+	</action>
+	<!-- 前台卖域名 -->
+	<action name="qsellAction"  class="qsellAction" >
+	   <result name="sell">/WEB-INF/client/sell.jsp</result>
+	</action>
+	<!-- 前台拍卖域名 -->
+	<action name="qauctionAction"  class="qauctionAction" >
+	   <result name="auction">/WEB-INF/client/auction.jsp</result>
+	</action>
+	<!-- 前台域名中介 -->
+	<action name="qescrowAction"  class="qescrowAction" >
+	   <result name="escrow">/WEB-INF/client/escrow.jsp</result>
+	</action>
+		<!-- 前台一口价域名 -->
+	<action name="qflatlyPriceAction"  class="qflatlyPriceAction" >
+	   <result name="flatlyPrice">/WEB-INF/client/flatlyPrice.jsp</result>
+	</action>
+	<!-- 前台优质域名 -->
+	<action name="qhighQualityAction"  class="qhighQualityAction" >
+	   <result name="highQuality">/WEB-INF/client/highQuality.jsp</result>
+	</action>
+</package>
+
+</struts>

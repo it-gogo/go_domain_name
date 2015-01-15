@@ -35,7 +35,6 @@ public class ThloginAction extends ST2BaseAction<Thuser, String> {
 	 * @return
 	 */
 	public String toLogin(){
-		
 		return "login";
 	}
 	/**
