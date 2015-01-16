@@ -24,7 +24,6 @@
     <%@include file="/WEB-INF/client/common/updTimeWrap.jsp" %>
     <div id="cph_serverTime_path">当前位置：<a href='/'>首页</a>&nbsp;>>&nbsp;<h1><a href="/escrow">域名中介</a></h1></div>
 </div>
-<script src="/Javascript/serverTime.js"></script>  
 <div class="clear_right"></div>      
 
         <div class="idx_right">
@@ -117,7 +116,7 @@
             </div>
         </div>
         <div class="idx_left">
-            <a title="发起中介交易" href="javascript:monitor(18,'/account/orders/start')"><img alt="发起中介交易" src="/images/escrowDomain.jpg" style="height:200px; width:720px;" /></a>
+            <a title="发起中介交易" href="javascript:monitor(18,'/account/orders/start')"><img alt="发起中介交易" src="<%=request.getContextPath() %>/css/client/images/escrowDomain.jpg" style="height:200px; width:720px;" /></a>
             <div id="div_escrow">
                 <span class="separate"></span><span class="tab_select" lf="0px">域名中介服务介绍</span><span class="separate"></span><span lf="-720px" class="tab">我们的优势</span><span class="separate"></span><span class="tab" lf="-1440px">域名中介流程</span><span class="separate"></span>
             </div>

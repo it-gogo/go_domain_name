@@ -16,7 +16,7 @@ import com.go.po.Thuser;
 @Scope("prototype")
 public class TqhighQualityAction extends ST2BaseAction<Thuser, String> {
     	
-	public String qhighQuality(){
+	public String highQuality(){
 		
 		return "highQuality";
 	}

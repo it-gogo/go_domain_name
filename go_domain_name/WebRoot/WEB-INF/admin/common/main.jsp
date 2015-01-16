@@ -6,16 +6,24 @@
   <head>
     <title>申博系统-主页</title>
     <%@include file="/WEB-INF/admin/common/includefile.jsp" %>
+    <link href="<%=request.getContextPath()%>/css/admin/style1.css" type="text/css" rel="stylesheet" />
     <link href="<%=request.getContextPath()%>/css/admin/style.css" type="text/css" rel="stylesheet" />
   </head>
 	<body style="margin: 0px;">
     <div class="easyui-layout" style="width:100%;height:100%;">
     	
-        <div data-options="region:'north'" style="height:100px">
+        <div data-options="region:'north'" style="height:55px" class="header">
+        	<h2 class="logo"><a href="#"></a></h2>
+		    <div class="header_r">
+		    	<div class="admin_ico"><img src="<%=request.getContextPath() %>/css/admin/images/person.png" /></div>
+		    	<a href="#">[帐号:${loginUser.username}&nbsp;&nbsp;姓名:${loginUser.name}]</a>
+		        <a class="edit" href="javascript:modifypass()">修改密码</a>
+		        <a class="logout" href="javascript:loginOut()">注销</a>
+		    </div>
         </div>
         
         
-        <div data-options="region:'west'"  style="width:200px;" id="content">
+        <div data-options="region:'west'"  style="width:205px;" id="content" >
             <div class="easyui-accordion" data-options="fit:true,border:false"  >
             	<s:iterator  value="#request.menuList" var="menu" >
             		<div title="${menu.mname }"  data-options="selected:true" style="margin: 0px;padding: 0px;" >
@@ -100,7 +108,7 @@
         	var h =  $(window).height();	
 		    var theight = 75;//头部高度
 		    var  cheight =  h-62;//定义层的高度
-		     var ifheight = h-120;//定义IFrame的高度
+		     var ifheight = h-80;//定义IFrame的高度
             index++;
             if($("#mainPanel").tabs('exists',titles)){
     	  $("#mainPanel").tabs('select',titles);

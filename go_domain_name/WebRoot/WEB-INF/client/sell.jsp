@@ -61,7 +61,7 @@
             </div>
         </div>      
         <div class="idx_left" >
-            <img src="/images/sellDomain.jpg" style="height:200px; width:720px;" />
+            <img src="<%=request.getContextPath() %>/css/client/images/sellDomain.jpg" style="height:200px; width:720px;" />
             <div id="sell_d">
                 <div class="idx_left_d1">
                     <div></div>
