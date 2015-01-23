@@ -42,13 +42,13 @@ a{color:#757c84;font-family:'Microsoft Yahei';}
 .panel-header, .panel-body {border-color: #95B8E7;}
 .panel-body{ width:200px; height:auto;}
 
-.panel-body ul{ margin:0x; width:200px; overflow:hidden;} 
+/*.panel-body ul{ margin:0x; width:200px; overflow:hidden;}*/ 
 
 .panel-body ul li{margin:0; overflow:hidden;}
 
 .panel-body ul li a label{line-height:19px;float:left; margin:10px 0 0 10px; width:90px;}
 
-.panel-body ul li a, #content .left ul li a{ float:left; padding:10px 0; background:url(images/menu_line.gif) bottom repeat-x; width:100%; color:#757c84; font-size:14px; overflow:hidden; cursor:pointer; text-decoration:none;}
+/*.panel-body ul li a, #content .left ul li a{ float:left; padding:10px 0; background:url(images/menu_line.gif) bottom repeat-x; width:100%; color:#757c84; font-size:14px; overflow:hidden; cursor:pointer; text-decoration:none;}*/
 /*.panel-body  span{ float:left; width:23px; height:20px; margin-left:6px; overflow:hidden;}
 */
 .panel-body ul li a:hover,.panel-body ul li.on a{background:#fff; }

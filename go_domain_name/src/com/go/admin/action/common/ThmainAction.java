@@ -36,8 +36,6 @@ public class ThmainAction extends ST2BaseAction<Thuser, String> {
 		try {
 			Thuser po=(Thuser) ContextUtil.getHttpSessionVal("hloginInfo");
 			List<Thmenu> list=menuDao.getMenulistForSysUser(po);
-			System.out.println(list.size());
-			System.out.println(list.get(0));
 			ContextUtil.setHttpRequestVal("menuList", list);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.go.admin.dao.ThuserDao;
+import com.go.common.util.ContextUtil;
 import com.go.common.util.Util;
 import com.go.core.action.ST2BaseAction;
 import com.go.po.Thuser;
@@ -24,6 +25,8 @@ public class ThuserAction extends ST2BaseAction<Thuser, String> {
 	private static final long serialVersionUID = 1L;
 
 	private Thuser vo = new Thuser();
+	private String newpw;
+	private String newpw1;
 	
 	@Autowired
 	private ThuserDao baseDao;
@@ -53,6 +56,30 @@ public class ThuserAction extends ST2BaseAction<Thuser, String> {
 		}
 		return super.updatexx();
 	}
+	
+	public String modifyPassword() {
+		
+		return "modifyPassword";
+	}
+	
+	public String modifyPW() throws Exception{
+		if(newpw.equals(newpw1)){
+			Thuser po=(Thuser) ContextUtil.getHttpSessionVal("hloginInfo");
+			password=Util.Encryption(password);
+			if(po.getPassword().equals(password)){
+				po.setPassword(password);
+				baseDao.update(po);
+				setReturnMessage("0","密码修改成功");
+			}else{
+				setReturnMessage("0","旧密码错误");
+			}
+		}else{
+			setReturnMessage("0","两次新密码不一致");
+		}
+		return "ajax";
+	}
+	
+	
 	public Thuser getVo() {
 		return vo;
 	}
@@ -70,5 +97,20 @@ public class ThuserAction extends ST2BaseAction<Thuser, String> {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getNewpw() {
+		return newpw;
+	}
+	public void setNewpw(String newpw) {
+		this.newpw = newpw;
+	}
+	public String getNewpw1() {
+		return newpw1;
+	}
+	public void setNewpw1(String newpw1) {
+		this.newpw1 = newpw1;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }

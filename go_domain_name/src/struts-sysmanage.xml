@@ -12,6 +12,7 @@
 	<!-- 后台用户 -->
 	<action name="huserAction"  class="huserAction" >
 	   <result name="input">/WEB-INF/admin/sysmanage/huser/huser.jsp</result>
+	   <result name="modifyPassword">/WEB-INF/admin/sysmanage/huser/modifyPasswordEdit.jsp</result>
 	</action>
 </package>
 

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "struts-2.0.dtd">
+<struts>
+<!-- 基本信息的拦截器配置 -->
+<package name="baseinfo" extends="basePackage" namespace="/baseinfo">
+	<!-- 数据 -->
+	<action name="hdataAction"  class="hdataAction" >
+	   <result name="input">/WEB-INF/admin/baseinfo/data/data.jsp</result>
+	</action>
+	<!-- 数据类型 -->
+	<action name="hdatatypeAction"  class="hdatatypeAction" >
+	   <result name="input">/WEB-INF/admin/baseinfo/datatype/datatype.jsp</result>
+	</action>
+</package>
+
+</struts>

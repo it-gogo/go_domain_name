@@ -15,7 +15,7 @@
 	 	</jsp:include>
 
         
-    <div class="bannerBg" style="margin-top:-3px;*margin-top:0;"></div>
+    <%--<div class="bannerBg" style="margin-top:-3px;*margin-top:0;"></div>--%>
     <div id="banner">
         <div id="imgWrap">            
             <div id='sliderPlay' style='visibility: hidden;top:0'>
@@ -23,6 +23,7 @@
                 <a rel="nofollow" href='/notice/news/210' target="_blank"><img src='<%=request.getContextPath() %>/upload/20141224_2.jpg' alt='年末活动' height='209px' width='720px'/></a>
                 <a rel="nofollow" href='javascript:void(0)'><img src='<%=request.getContextPath() %>/upload/20141224_3.jpg' alt='新版预告' height='209px' width='720px'/></a>
 	            <a rel="nofollow" href='/pg' target="_blank"><img src='<%=request.getContextPath() %>/upload/20141023.png' alt='域名估价' height='209px' width='720px'/></a>
+	            <a rel="nofollow" href='/pg' target="_blank"><img src='<%=request.getContextPath() %>/upload/20141224_1.png' alt='域名估价' height='209px' width='720px'/></a>
             </div>
            <div id="loginWrap">
                 <div id="lg">

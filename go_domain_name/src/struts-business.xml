@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "struts-2.0.dtd">
+<struts>
+<!-- 基本信息的拦截器配置 -->
+<package name="business" extends="basePackage" namespace="/business">
+	<!-- 域名信息 -->
+	<action name="hdomainAction"  class="hdomainAction" >
+	   <result name="input">/WEB-INF/admin/business/domain/domain.jsp</result>
+	</action>
+</package>
+
+</struts>

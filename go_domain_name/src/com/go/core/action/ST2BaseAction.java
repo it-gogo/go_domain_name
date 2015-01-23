@@ -213,17 +213,11 @@ public  class ST2BaseAction<T,PK> extends ActionSupport implements IBaseAction<T
 	}
 	
 	public String ajaxList()throws Exception{
-		System.out.println(ContextUtil.getHttpRequest().getRequestURI());
 		try {
 			Map<String,String[]>  parame = ContextUtil.getHttpParame();
-//			String csql = "Select count(*) from "+vo.getClass().getName()+"  Where 1=1";
-			System.out.println(this.getVo().getClass().getName());
 			String csql =this.getBaseDao().getCountSql(this.getVo());
 			String sql =this.getBaseDao().getSql(this.getVo());
 			SqlBean sqlBean = this.getBaseDao().createSQL(sql, csql, parame, null);
-			
-//			SqlBean sqlBean =baseDao.createSqlBean(vo,parame);
-			
 			PageBean  pageBean = this.getBaseDao().getH3DbManager().findList(sqlBean);
 			JSONObject  res = new JSONObject();
 			res.put("total", pageBean.getAllRow());

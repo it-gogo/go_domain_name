@@ -37,4 +37,6 @@
 	<include file="struts-sysmanage.xml"/>  
 	<include file="struts-client.xml"/>
 	<include file="struts-account.xml"/>
+	<include file="struts-baseinfo.xml"/>
+	<include file="struts-business.xml"/>
 </struts>

@@ -64,7 +64,6 @@ public  class SP3BaseDao<T,PK extends Serializable> implements ISP3BaseDao<T,PK>
 	}
 	
 	public SqlBean createSqlBean(BaseVo vo,Map<String,String[]>  parame){
-		System.out.println(vo.getClass().getName());
 		String csql = "Select count(*) from "+vo.getClass().getName()+"  Where 1=1";
 		String sql = "  From "+vo.getClass().getName()+" as a Where 1=1 ";
 		SqlBean sqlBean = this.createSQL(sql, csql, parame, null);

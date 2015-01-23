@@ -16,8 +16,8 @@
         	<h2 class="logo"><a href="#"></a></h2>
 		    <div class="header_r">
 		    	<div class="admin_ico"><img src="<%=request.getContextPath() %>/css/admin/images/person.png" /></div>
-		    	<a href="#">[帐号:${loginUser.username}&nbsp;&nbsp;姓名:${loginUser.name}]</a>
-		        <a class="edit" href="javascript:modifypass()">修改密码</a>
+		    	<a href="#">[帐号:${hloginInfo.lname}&nbsp;&nbsp;姓名:${hloginInfo.uname}]</a>
+		        <a class="edit" href="javascript:modifyPassword()">修改密码</a>
 		        <a class="logout" href="javascript:loginOut()">注销</a>
 		    </div>
         </div>
@@ -44,64 +44,18 @@
                     </ul>
                 </div>
             	</s:iterator>
-                <!-- <div title="Title1"  data-options="selected:true" style="margin: 0px;padding: 0px;" >
-                    <ul style="list-style-type:none"> 
-                    	<li>
-                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','../sysmanage/hmenuAction!redirect.action');"  >
-	                    		<img src=../css/admin/images/Menu_management.png />
-	                    		<label>角色管理</label>
-                    		</a>
-                    	</li>
-                    	<li>
-                    		<a href="javascript:void(0);" onclick="addPanel('104101','角色1管理','../sysmanage/huserAction!redirect.action');"  >
-	                    		<img src=../css/admin/images/Menu_management.png />
-	                    		<label>角色管理</label>
-                    		</a>
-                    	</li>
-                    </ul>
-                </div>
-                <div title="Title1"  data-options="selected:true" style="margin: 0px;padding: 0px;" >
-                    <ul style="list-style-type:none"> 
-                    	<li>
-                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','../sysmanage/hmenuAction!findList.action');"  >
-	                    		<img src=../css/admin/images/Menu_management.png />
-	                    		<label>角色管理</label>
-                    		</a>
-                    	</li>
-                    	<li>
-                    		<a href="javascript:void(0);" onclick="addPanel('104102','角色管理','../sysmanage/troleAction.action');"  >
-	                    		<img src=../css/admin/images/Menu_management.png />
-	                    		<label>角色管理</label>
-                    		</a>
-                    	</li>
-                    </ul>
-                </div> -->
             </div>
         </div>
         
         
         <div data-options="region:'center',iconCls:'icon-ok',tools:'#tab-tools'"  >
-           <!--  <div class="easyui-tabs" data-options="fit:true,border:false,plain:true">
-                <div title="DataGrid" style="padding:5px">
-                    <table class="easyui-datagrid"
-                            data-options="url:'datagrid_data1.json',method:'get',singleSelect:true,fit:true,fitColumns:true">
-                        <thead>
-                            <tr>
-                                <th data-options="field:'itemid'" width="80">Item ID</th>
-                                <th data-options="field:'productid'" width="100">Product ID</th>
-                                <th data-options="field:'listprice',align:'right'" width="80">List Price</th>
-                                <th data-options="field:'unitcost',align:'right'" width="80">Unit Cost</th>
-                                <th data-options="field:'attr1'" width="150">Attribute</th>
-                                <th data-options="field:'status',align:'center'" width="50">Status</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div> -->
 		    <div id="mainPanel" class="easyui-tabs" data-options="tools:'#tab-tools'" style="width:100%;height:100%;">
 		    </div>
         </div>
+<%@include file="/WEB-INF/admin/sysmanage/huser/modifyPassword.jsp" %>
     </div>
+    
+</body>
 <script type="text/javascript">
         var index = 0;
         function addPanel(cdbh,titles,action){
@@ -115,14 +69,8 @@
     	   var currTab = $('#mainPanel').tabs('getTab', titles),  
              iframe = $(currTab.panel('options').content),  
             content = '<iframe scrolling="auto" frameborder="0"  src="' + iframe.attr('src') + '" style="width:100%;height:100%;"></iframe>';  
-        /*   $('#mainPanel').tabs('update', {tab: currTab, options: {content: content, closable: true}});  */
           $('#mainPanel').tabs('updateIframeTab', {tab: currTab, options: {content: content, closable: true},which:titles}); 
        }else{
-          /*   $('#mainPanel').tabs('add',{
-                title: titles,
-                content:'<iframe id="t" scrolling="yes" frameborder="0"  src='+action+' width="100%" height="'+ifheight+'"></iframe>',
-                closable: true
-            }); */
              var count = 0;
        		$("#mainPanel").tabs('addIframeTab',{
 				tab:{
@@ -144,6 +92,18 @@
                 $('#mainPanel').tabs('close', index);
             }
         }
+        function loginOut(){
+  			 $.messager.confirm('询问','是否确认退出系统?',function(r){
+  	            if (r){
+  	            	location.href ="../common/hloginAction!toLogin.action";
+  	            }
+  	        });
+        }
+        function modifyPassword(){
+		    $("#eDialog").dialog('open');
+		    submitMethod = "../sysmanage/huserAction!modifyPW.action";
+		    $(".window-mask").css({height:$(window)._outerHeight()})
+		    $('#eDialog').dialog('refresh','../sysmanage/huserAction!modifyPassword.action');
+		}
     </script>
-</body>
 </html>
