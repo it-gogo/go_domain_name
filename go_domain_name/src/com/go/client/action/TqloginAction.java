@@ -17,12 +17,17 @@ import com.go.po.Thuser;
  *
  */
 @Controller("qloginAction")
-@ParentPackage("client")
+@ParentPackage("account")
 @Scope("prototype")
 public class TqloginAction extends ST2BaseAction<Thuser, String> {
     	
 	public String login(){
 		
 		return "login";
+	}
+	
+	public String register(){
+		
+		return "register";
 	}
 }

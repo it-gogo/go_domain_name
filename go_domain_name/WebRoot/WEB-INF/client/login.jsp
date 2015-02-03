@@ -56,7 +56,7 @@
                     <dd>担保交易<br />
                         专业团队，一流的技术和服务确保买家资金和卖家域名安全。</dd>
                 </dl>
-                <div class="btn"><a href="/register" class="login_btn">免费注册新会员</a></div>
+                <div class="btn"><a href="../account/qloginAction!register.action" class="login_btn">免费注册新会员</a></div>
             </div>
             <!--lwl-->
             <div class="lwr">

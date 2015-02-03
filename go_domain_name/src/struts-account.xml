@@ -8,6 +8,7 @@
 	<!-- 前台登陆 -->
 	<action name="qloginAction"  class="qloginAction" >
 	   <result name="login">/WEB-INF/client/login.jsp</result>
+	   <result name="register">/WEB-INF/client/register.jsp</result>
 	</action>
 </package>
 

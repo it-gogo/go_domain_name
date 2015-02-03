@@ -10,6 +10,7 @@
 <jsp:include page="/WEB-INF/client/common/head.jsp" >
   		<jsp:param value="一口价域名" name="name"/>
 	</jsp:include>
+	<link href="<%=request.getContextPath() %>/css/client/css/content.css" rel="stylesheet" />
 </head>
 <body>
     <div>
