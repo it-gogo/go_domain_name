@@ -1,5 +1,5 @@
 *{padding:0;margin:0;}
-html{/*滚动条样式*/
+html{/*滚动条样式*/height
 overflow-Y:scroll;overflow-X:hidden;scrollbar-face-color:#ffffff;scrollbar-shadow-color:#C1C1BB;scrollbar-highlight-color:#C1C1BB;scrollbar-3dlight-color:#EBEBE4;scrollbar-darkshadow-color:#EBEBE4;scrollbar-track-color:#F4F4F0;scrollbar-arrow-color:#000000;}
 body{/*background-color:#f1f2f6;*/
 font-family:Arial,Helvetica,微软雅黑;font-size:13px;color:#646567;text-align:center;}
@@ -109,3 +109,7 @@ table tr:hover{background:#dbe9f2;}
 #info table tr:hover{background:none;}
 .lwr table tr:hover{background:none;}
 .tb_3 tr:hover{background:none;}
+
+/*弹窗背景层*/
+.modal_window{ position:absolute; top:0; left:0; width:100%; height:100%; background:#fff; filter:alpha(opacity=70); /*IE*/-moz-opacity:0.5; /*MOZ , FF*/ opacity:0.5; /*CSS3, FF1.5*/z-index:10;}
+

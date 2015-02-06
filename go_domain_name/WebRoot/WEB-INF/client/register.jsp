@@ -8,6 +8,7 @@
 <jsp:include page="/WEB-INF/client/common/head.jsp">
 	<jsp:param value="注册" name="name" />
 </jsp:include>
+<script src="<%=request.getContextPath() %>/js/client/register.js"></script>
 <link href="<%=request.getContextPath() %>/css/client/css/regist.css" rel="stylesheet" />
 </head>
 <body>
@@ -83,23 +84,13 @@
 										<span class="c_999">请输入您的QQ号码。</span>
 									</td>
 								</tr>
-								<%--<tr>
-									<td class="title">请输入验证码:<strong>*</strong></td>
-									<td><img id="oauth"
-										onclick="this.src='/oauth/getauthcode?i='+Math.random();"
-										style="float:left; height:25px; width:70px; margin-right:5px; "
-										title="点击刷新" alt="验证码" src="/oauth/getauthcode" class="yzm" />
-										<input name="ctl00$cph$authCode" type="text" id="cph_authCode"
-										maxlength="4" style="width:83px; height:25px;" />
-										<span class="c_999"> 请输入图中4位字符（不区分大小写）。看不清楚验证码，请点击图片刷新。</span>
-									</td>
-								</tr>
-							--%></table>
+							</table>
 						</div>
 						<!--tab-->
 						<p class="btn">
 							<input type="button" name="" value="注册" onclick="save('registerForm')" />
-						</p>
+							<%--<input type="button" name="" value="测试" onclick="CAlert('registerForm');window.setInterval(function(){location.href='../'},3000);" />
+						--%></p>
 					</div>
 					</form>
 					<!--regist-->

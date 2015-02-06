@@ -52,7 +52,7 @@
 	     <result   name="unvalid">/errors/sessionError.jsp</result>
 	     <result   name="noAuth">/WEB-INF/errors/noAuthError.jsp</result>
 	     <!-- 操作提示 -->
-	     <result   name="operationTips">/WEB-INF/common/operationTips.jsp</result>
+	     <result   name="operationTips">/WEB-INF/client/common/operationTips.jsp</result>
 	  </global-results>
 	  <!-- 异常捕获  --> 
 	  <global-exception-mappings>  

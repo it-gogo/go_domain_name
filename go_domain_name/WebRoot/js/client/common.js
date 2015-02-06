@@ -5,25 +5,27 @@
  */
 var initForm = function(formID){
 	$("#"+formID).submit(function() {
-        $(this).ajaxSubmit({
+        $("#"+formID).ajaxSubmit({
         	resetForm:true,
         	type:"POST",
         	cache: false,
         	success:function(data){
         		$("#"+formID).unbind("submit");
-        		var json = eval("("+data+")");
-        		if(json.status==1){//1表示成功
-//        			saveSuccess(json.msg);
-        			CAlert(json.msg,function(){location.href="../"});
-        		}else if(json.status==0){//1表示失败
-        			CAlert(json.msg);
-        		}
+        		formPrompt(data)
         		return false;
           	}
         }); 
         return false;
 	}); 
 };
+function formPrompt(data){
+	var json = eval("("+data+")");
+	if(json.status==1){//1表示成功
+		CAlert(json.msg);
+	}else if(json.status==0){//1表示失败
+		CAlert(json.msg);
+	}
+}
 /**
  * 验证函数
  * @param boolean

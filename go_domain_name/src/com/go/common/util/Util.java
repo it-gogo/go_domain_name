@@ -2,7 +2,6 @@ package com.go.common.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -10,9 +9,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -30,11 +30,31 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.thoughtworks.xstream.core.util.Base64Encoder;
 
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+
 public class Util {
+	public static String getTempStr(String tempName,Map<String, Object> root) throws Exception{
+		Configuration cfg = new Configuration();
+		String  path = ServletActionContext.getServletContext().getRealPath("temp\\");
+		cfg.setDirectoryForTemplateLoading(new File(path+"\\"));
+		Template temp = cfg.getTemplate(tempName,"UTF-8");
+		ByteArrayOutputStream bao = new ByteArrayOutputStream();  
+		Writer out = new PrintWriter(bao);
+		temp.process(root, out);
+		byte[]  book = bao.toByteArray();
+		String str = new String(book);
+		return str;
+	}
+	
+	/**
+	 * md5加密
+	 * @param str
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 */
 	public static String Encryption(String str) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("md5");
 		byte[] buf = md.digest(str.getBytes());
